@@ -1,7 +1,5 @@
 $(function(){
 
-    $('#page-table').DataTable();
-
     $(".page_sort").sortable();
 
     $(".page_sort").on('click', '.js-delete-button', function(e){
@@ -41,4 +39,50 @@ $(function(){
 
     updateCount();
 
+    var pagePickerTabSetup = function() {
+        $('ul#ccm-pagepicker-tabs li a').each( function(num,el){
+            el.onclick=function(){
+                var pane=$(this).attr('href');
+                console.log(pane);
+
+                pagepickerShowPane(pane);
+            }
+        });
+    };
+
+    var pagepickerShowPane = function (pane){
+        $('ul#ccm-pagepicker-tabs li a').each(function(num,el){ $(el).parent().removeClass('active') });
+        $('a[href$="'+pane+'"]').parent().addClass('active');
+        $('.tab-pane').each(function(num,el){ el.style.display='none'; });
+        $(pane).css('display','block');
+    };
+
+    pagePickerTabSetup();
+
+    $('#page-table').DataTable({
+        initComplete: function () {
+            var api = this.api();
+            var column = api.column( 1 );
+            var select = $('<select><option value="">All Page Types</option></select>')
+                .appendTo( $(column.footer()).empty() )
+                .on( 'change', function () {
+                    var val = $.fn.dataTable.util.escapeRegex(
+                        $(this).val()
+                    );
+
+                    column
+                        .search( val ? '^'+val+'$' : '', true, false )
+                        .draw();
+                } );
+
+            column.data().unique().sort().each( function ( d, j ) {
+                select.append( '<option value="'+d+'">'+d+'</option>' )
+            } );
+        },
+        dom: 'ftlip'
+    });
+
 });
+
+
+
