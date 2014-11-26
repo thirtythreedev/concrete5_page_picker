@@ -163,6 +163,7 @@ $nh = Loader::helper('navigation');
     #page-picker__wrapper {
         margin-top: 30px;
         margin-bottom: 30px;
+        box-sizing: border-box;
     }
 
     /*! clearfix */
@@ -179,6 +180,7 @@ $nh = Loader::helper('navigation');
     /*! tab panel states */
     #page-picker__wrapper .tab-pane {
         display: none;
+        box-sizing: border-box;
     }
 
     #page-picker__wrapper .tab-pane.active {
@@ -193,6 +195,7 @@ $nh = Loader::helper('navigation');
         border: 1px solid #DDD;
         padding: 5px;
         background-color: #F6F6F6;
+        box-sizing: border-box;
     }
 
     /*! picked pages left column */
@@ -200,6 +203,7 @@ $nh = Loader::helper('navigation');
         width: 55%;
         float: left;
         padding: 0.5em;
+        box-sizing: border-box;
     }
 
     /*! picked pages left column datatable specific */
@@ -209,6 +213,7 @@ $nh = Loader::helper('navigation');
         border: 1px solid #DDD;
         border-bottom: none;
         background-color: #F9F9F9;
+        box-sizing: border-box;
     }
 
     #page-picker__wrapper .dataTables_filter label {
@@ -217,6 +222,7 @@ $nh = Loader::helper('navigation');
         line-height: 28px;
         margin: 0;
         text-align: left;
+        box-sizing: border-box;
     }
 
     #page-picker__wrapper .dataTables_filter label input {
@@ -224,11 +230,13 @@ $nh = Loader::helper('navigation');
         width: 320px;
         border-radius: 14px;
         margin-bottom: 0;
+        box-sizing: border-box;
     }
 
     #page-picker__wrapper table.dataTable {
         border-collapse: collapse;
         margin-bottom: 5px;
+        box-sizing: border-box;
     }
 
     #page-picker__wrapper tbody,
@@ -268,7 +276,7 @@ $nh = Loader::helper('navigation');
     }
 
     #page-picker__wrapper .dataTables_info {
-        max-width: 41%;        
+        max-width: 41%;
     }
 
     /*! picked pages right column */
@@ -292,6 +300,7 @@ $nh = Loader::helper('navigation');
         border: 1px solid #DDD;
         border-bottom: none;
         background-color: #F9F9F9;
+        box-sizing: border-box;
     }
 
     /*! picked pages list */
@@ -303,6 +312,7 @@ $nh = Loader::helper('navigation');
         margin-left: 0;
         padding-left: 0;
         position: relative;
+        box-sizing: border-box;
     }
 
     /*! picked pages list items */
@@ -312,6 +322,7 @@ $nh = Loader::helper('navigation');
         background-color: #FFFFFF;
         border-bottom: 1px solid #DDD;
         position: relative;
+        box-sizing: border-box;
         cursor: move; /* fallback if grab cursor is unsupported */
         cursor: grab;
         cursor: -moz-grab;
