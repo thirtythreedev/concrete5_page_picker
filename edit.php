@@ -267,6 +267,10 @@ $nh = Loader::helper('navigation');
         background-repeat: no-repeat;
     }
 
+    #page-picker__wrapper .dataTables_info {
+        max-width: 41%;        
+    }
+
     /*! picked pages right column */
     #page-picker__wrapper .relationship-right {
         padding: 1em;
