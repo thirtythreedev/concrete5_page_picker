@@ -12,12 +12,12 @@ $(function(){
         e.preventDefault();
 
         var $this = $(this),
-            href = $this.attr('href'),
-            cid = $this.data('cid'),
-            title = $this.text();
+            href  = $this.data('url'),
+            cid   = $this.data('cid'),
+            title = $this.data('title');
 
-        var str = '';
-            str += '<li id="page--'+ cid +'">';
+        var str  = '';
+            str += '<li id="page--'+ cid +'" class="relationship-list__item">';
             str += '<a href="' + href + '" data-cid="'+ cid +'">' + title;
             str += '<span class="acf-button-remove"></span>';
             str += '</a>';
@@ -43,7 +43,7 @@ $(function(){
         $('ul#ccm-pagepicker-tabs li a').each( function(num,el){
             el.onclick=function(){
                 var pane=$(this).attr('href');
-                console.log(pane);
+                //console.log(pane);
 
                 pagepickerShowPane(pane);
             }
@@ -54,6 +54,7 @@ $(function(){
         $('ul#ccm-pagepicker-tabs li a').each(function(num,el){ $(el).parent().removeClass('active') });
         $('a[href$="'+pane+'"]').parent().addClass('active');
         $('.tab-pane').each(function(num,el){ el.style.display='none'; });
+        //console.log(pane);
         $(pane).css('display','block');
     };
 
@@ -64,7 +65,7 @@ $(function(){
             var api = this.api();
             var column = api.column( 1 );
             var select = $('<select><option value="">All Page Types</option></select>')
-                .appendTo( $(column.footer()).empty() )
+                .appendTo( $(column.header()).empty() )
                 .on( 'change', function () {
                     var val = $.fn.dataTable.util.escapeRegex(
                         $(this).val()
@@ -73,16 +74,18 @@ $(function(){
                     column
                         .search( val ? '^'+val+'$' : '', true, false )
                         .draw();
-                } );
+                });
 
             column.data().unique().sort().each( function ( d, j ) {
                 select.append( '<option value="'+d+'">'+d+'</option>' )
-            } );
+            });
         },
-        dom: 'ftlip'
-    });
+        dom: 'ftip',
+        "columns": [
+            null,
+            { "orderable": false },
+            ]
+        }
+    );
 
 });
-
-
-

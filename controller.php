@@ -31,12 +31,6 @@ class PagePickerBlockController extends BlockController
         return t("Page Picker");
     }
 
-    public function on_page_view()
-    {
-        $html = Loader::helper('html');
-        $this->addHeaderItem( $html->javascript('//cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js') );
-        $this->addHeaderItem( $html->css('//cdn.datatables.net/1.10.4/css/jquery.dataTables.min.css') );
-    }
 
     public function getPageList($order = false)
     {
@@ -316,5 +310,3 @@ class PagePickerBlockController extends BlockController
 
 
 }
-
-
