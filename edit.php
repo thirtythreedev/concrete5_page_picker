@@ -22,7 +22,7 @@ $nh = Loader::helper('navigation');
             <!-- Relationship Field -->
             <div class="ccm-block-field-group cf relationship-wrapper">
                 <!-- Left Column -->
-                <div class="relationship-left cf">
+                <div class="relationship-left cf ccm-ui">
                     <table id="page-table" class="display" cellspacing="0" width="100%">
                         <thead>
                         <tr>
@@ -64,7 +64,7 @@ $nh = Loader::helper('navigation');
                 </div>
                 <!-- /Left Column -->
                 <!-- Right Column -->
-                <div class="relationship-right cf">
+                <div class="relationship-right ccm-ui cf">
                     <div id="page-count">
                         <span class="number">0</span> pages currently selected.
                     </div>
@@ -106,9 +106,10 @@ $nh = Loader::helper('navigation');
         <!-- /Tab One -->
         <!-- Tab Two -->
         <div class="tab-pane" id="page-picker__settings">
-            <div class="ccm-block-field-group">
+            <div class="ccm-block-field-group ccm-ui">
                 <h2><?php echo t('Block Order') ?></h2>
                 <label>
+                    <?php echo t('Output Order of block.') ?>
                     <select name="orderBy" id="orderBy">
                         <option value="display_asc" <?php if ($orderBy == "display_asc"): ?>selected<?php endif; ?>>
                             Display Asc
@@ -129,21 +130,19 @@ $nh = Loader::helper('navigation');
                             Alpha Desc
                         </option>
                     </select>
-                    <?php echo t('Output Order of block.') ?>
+
                 </label>
             </div>
-            <div class="ccm-block-field-group">
+            <div class="ccm-block-field-group ccm-ui">
                 <h2><?php echo t('Pagination') ?></h2>
                 <label class="checkbox">
                     <input type="checkbox" name="paginate"
                            value="1" <?php if ($paginate == 1) { ?> checked <?php } ?> />
                     <?php echo t('Display pagination interface if more items are available than are displayed.') ?>
                 </label>
-            </div>
-            <div class="ccm-block-field-group">
-                <h2><?php echo t('Number of Items') ?></h2>
-                <label class="checkbox">
-                    <input type="text" name="num" value="<?php echo $num ?>" style="width: 30px">
+                <h3><?php echo t('Items per page') ?></h3>
+                <label>
+                    <input type="text" name="num" value="<?php echo $num ?>" style="width: 30px; display:inline-block">
                     <?php echo t('Number of items to paginate on.') ?>
                 </label>
             </div>
