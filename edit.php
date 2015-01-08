@@ -68,7 +68,6 @@ $nh = Loader::helper('navigation');
                     <div id="page-count">
                         <span class="number">0</span> pages currently selected.
                     </div>
-
                     <ul class="bl relationship-list page_sort">
                         <?php foreach ($selectedPages as $page):
                             // Prepare data for each page being listed...

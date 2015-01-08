@@ -31,7 +31,6 @@ class PagePickerBlockController extends BlockController
         return t("Page Picker");
     }
 
-
     public function getPageList($order = false)
     {
         Loader::model('page_list');
@@ -263,7 +262,7 @@ class PagePickerBlockController extends BlockController
         $args['num'] = ($args['num'] > 0) ? $args['num'] : 0;
         $args['paginate'] = intval($args['paginate']);
         $db->query("DELETE FROM btPagePickerCid WHERE bID=" . intval($this->bID));
-        // foreach CID store em for use on a query later
+//        // foreach CID store em for use on a query later
         $pos = 0;
         if(!empty($args['cids'])){
             foreach($args['cids'] as $cid){
@@ -272,6 +271,8 @@ class PagePickerBlockController extends BlockController
                 $pos++;
             }
         }
+        // need to unset cids in args because it screws with c5's built in save
+        unset( $args['cids'] );
         parent::save($args);
     }
 
