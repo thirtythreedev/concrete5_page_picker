@@ -96,11 +96,6 @@ class PagePickerBlockController extends BlockController
              $pl->filter(false, 'p1.cID IN ('. implode(', ', $cids ) .')');
         }
 
-        $columns = $db->MetaColumns(CollectionAttributeKey::getIndexedSearchTable());
-
-        if( isset($columns['AK_EXCLUDE_PAGE_LIST'])) {
-            $pl->filter(false, '(ak_exclude_page_list = 0 or ak_exclude_page_list is null)');
-        }
 
         return $pl;
 
@@ -112,7 +107,7 @@ class PagePickerBlockController extends BlockController
     public function getCIDs()
     {
         $db = Loader::db();
-        $ret = $db->query("SELECT * FROM btPagePickerCID WHERE bID=" . intval($this->bID) );
+        $ret = $db->query("SELECT * FROM btPagePickerCid WHERE bID=" . intval($this->bID) );
 
         foreach($ret as $r){
             array_push($this->cids, $r["colID"]);
@@ -304,7 +299,7 @@ class PagePickerBlockController extends BlockController
     public function delete()
     {
         $db = Loader::db();
-        $db->query("DELETE FROM btPagePickerCID WHERE bID=" . intval($this->bID));
+        $db->query("DELETE FROM btPagePickerCid WHERE bID=" . intval($this->bID));
         parent::delete();
     }
 
